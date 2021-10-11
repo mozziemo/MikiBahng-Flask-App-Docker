@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block body %}
+<body> 
+<div class="container-fluid">
+	<!-- <div style="justify-content: center;"> -->
+    <p><h3>Google News Sentiment Analysis for the search term: {{search_term}}</h3></p>
+	<br>
+	
+	<div style="display: flex; justify-content: center;"><h4 style='color: #004080;'> Overall Sentiment for "{{search_term}}" on Google News is <b><i>{{sentiment_overall}}</i></b>!</h4></div>
+
+	 <div style="display: flex; justify-content: center;"><p> with Average Sentiment Score (or Polarity) = {{sentiment_score_average}} </p>
+	</div>
+	<br>
+
+	<h4>Distribution of Google News Headlines: Positive <i>vs</i> Neutral <i>vs</i> Negative </h4>
+	 
+	<div id="bar-chart">
+	   <embed type="image/svg+xml" src= {{ bar_chart|safe }} style='max-width:700px' />
+	</div>
+	<br>
+	 
+	<div id="pie-chart">
+	   <embed type="image/svg+xml" src= {{ pie_chart|safe }} style='max-width:700px' />
+	</div>
+	 
+    Positive News Headlines: {{positive_rate}} %, Neutral News Headlines: {{neutral_rate}} %, Negative News Headlines: {{negative_rate}} % 
+	<br>
+	[Note: Each News headline has the different level of influence to the overall sentiment. Thus, more negative News headlines do not always result in overall negative sentiment, and vice versa. Only {{data_count}} News headlines have been sampled for a quick sentiment analysis test in this App, not intended for in-dept analysis by any means.]
+	<br>
+	
+	<p><h4> Here are some of the News headlines & Sentiment Polarity Scores for the search term: {{search_term}} </h4></p>
+	<div class=page>
+	 {{ data_table | safe }}
+	</div>
+	<br>
+	<h4>Fun? <a href = "{{ url_for('select_google_news_search_term') }}"><u>Click here to start Google News Sentiment Analysis for a new search term</u></a>
+	</h4>
+	<br><br>
+	<!-- </div> -->
+</div>
+</body>
+	
+{% endblock %}

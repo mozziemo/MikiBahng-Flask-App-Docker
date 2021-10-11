@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<body>
+<div class="container-fluid">
+    <p><h3>Choose a Search Term for Google News Sentiment Analysis</h3></p>
+        
+     <div> <form method = "post" action="/google-news-app/sentiment-analysis">
+		 <div class="form-group">
+         <label for = "keyword">Search Term: </label>
+         <input type = "text" style = "width:16em" maxlength = "100" name = "keyword" placeholder = "e.g., Elon Musk, Tesla, VW, etc" onkeypress = "return isNumberKey(event)" required/><br>
+         </div>
+		 <button type = "submit" class = "btn btn-success">Submit</button>
+      </form>
+	  </div>
+    <br><br><br><br><br><br><br><br><br>
+	<p><sup>*</sup> This Google News Headlines Sentiment Analysis Web App has been built using Python (TextBlob library) and Flask, by Miki Bahng. </p>
+	<br><br>	
+</div>	
+</body>
+	
+{% endblock %}
